@@ -39,7 +39,7 @@ In surveillance video analysis, automated scene understanding heavily relies on 
 
 ---
 
-## 🔬 Core Engineering Insights & Diagnostic Findings
+##  Core Engineering Insights & Diagnostic Findings
 
 ### 1. The Global Luminance Albedo Illusion
 Statistical testing on the training set revealed a counter-intuitive phenomenon:
