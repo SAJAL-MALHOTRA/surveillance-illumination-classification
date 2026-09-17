@@ -7,11 +7,7 @@
 
 A high-performance machine learning pipeline for **3-class surveillance video illumination classification** (**Dark = 0**, **Normal = 1**, **Bright = 2**), engineered to operate under **CPU-only constraints** while pushing competitive accuracy to the top of the leaderboard.
 
----
 
->  **All-Time Record:** **Score 0.211 (158 / 300 correct)**, awarded the green **'Best solution' badge** on the platform. Current Leaderboard Rank #1 is at 163 / 300 (Score 0.2389) - within striking distance!
-
----
 
 ##  Executive Summary & Problem Overview
 
