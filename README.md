@@ -9,11 +9,11 @@ A high-performance machine learning pipeline for **3-class surveillance video il
 
 ---
 
-> 🏆 **All-Time Record:** **Score 0.211 (158 / 300 correct)**, awarded the green **'Best solution' badge** on the platform. Current Leaderboard Rank #1 is at 163 / 300 (Score 0.2389) - within striking distance!
+>  **All-Time Record:** **Score 0.211 (158 / 300 correct)**, awarded the green **'Best solution' badge** on the platform. Current Leaderboard Rank #1 is at 163 / 300 (Score 0.2389) - within striking distance!
 
 ---
 
-## 📌 Executive Summary & Problem Overview
+##  Executive Summary & Problem Overview
 
 In surveillance video analysis, automated scene understanding heavily relies on accurate camera illumination classification. However, real-world surveillance camera feeds present major challenges: sensor exposure variability, mixed indoor artificial lighting vs. overcast daylight, directional headlights, and reflective surfaces (supermarket tiles, brushed-steel elevators, wet asphalt).
 
@@ -27,7 +27,7 @@ In surveillance video analysis, automated scene understanding heavily relies on 
 
 ---
 
-## 🏆 Leaderboard Progression
+##  Leaderboard Progression
 
 | Version | LB Score | Correct / 300 | Key Architecture / Intervention |
 |:---|:---:|:---:|:---|
@@ -62,7 +62,7 @@ While the training set is artificially balanced (500 / 500 / 500), the natural t
 
 ---
 
-## ⚙️ System Architecture
+##  System Architecture
 
 ### 1. 128-D Handcrafted Physical Luminance Descriptors (Weighted 2.0x)
 - Multi-scale 4x4 spatial grid uniformity & luminance gradients.
@@ -81,7 +81,7 @@ While the training set is artificially balanced (500 / 500 / 500), the natural t
 
 ---
 
-## 📁 Repository Structure
+##  Repository Structure
 
 `
 ├── build_breakthrough_submission.py # v6 breakthrough generator (156 correct)
@@ -106,7 +106,7 @@ While the training set is artificially balanced (500 / 500 / 500), the natural t
 
 ---
 
-## 🚀 Reproduction Quickstart
+##  Reproduction Quickstart
 
 ### 1. Environment Setup
 `ash
@@ -126,5 +126,5 @@ python build_v9_submission.py
 
 ---
 
-## 📜 License
+##  License
 Developed by **Sajal Malhotra** for competitive computer vision benchmarking. Licensed under the [MIT License](LICENSE).
