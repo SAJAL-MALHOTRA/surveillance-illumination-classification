@@ -38,7 +38,7 @@ In surveillance video analysis, automated scene understanding heavily relies on 
 | grandmaster_v5 | 0.150 | 147 / 300 | 3-seed variance exploration *(failed)* |
 | `breakthrough_v6` | **0.200** | **156 / 300** | **Record Breakthrough:** 19 visual domain corrections resolving false-bright office/supermarket confusions |
 | `breakthrough_v7` | 0.183 | 153 / 300 | *Diagnostic Experiment:* Tested 5 high-luminance flips to Bright *(proved Normal dominance)* |
-| `breakthrough_v8` | **0.211** | **158 / 300** | **⭐ 'BEST SOLUTION' BADGE:** 5 micro-margin false-Brights corrected to Normal |
+| `breakthrough_v8` | **0.211** | **158 / 300** | ** 'BEST SOLUTION' BADGE:** 5 micro-margin false-Brights corrected to Normal |
 | `breakthrough_v9` | *Pending* | Projected ~164 | Rank #1 Push: 6 verified false-Brights (canopy night scenes, dim elevator doors) corrected |
 
 ---
