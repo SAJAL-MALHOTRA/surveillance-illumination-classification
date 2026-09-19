@@ -2,8 +2,8 @@ import numpy as np
 from sklearn.model_selection import cross_val_score, StratifiedKFold
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler, normalize
-
-COMP_DIR = r"C:\Users\2006s\Documents\Codex\2026-09-11\create-an-image-of\outputs\illumination-classifier\comp_output"
+from pathlib import Path
+COMP_DIR = str(Path(__file__).resolve().parent / "comp_output")
 
 v1 = np.nan_to_num(np.load(f"{COMP_DIR}/train_features.npz")["X"])
 v2 = np.nan_to_num(np.load(f"{COMP_DIR}/train_features_v2.npz")["X"])

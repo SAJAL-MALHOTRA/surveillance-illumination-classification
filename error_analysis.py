@@ -14,8 +14,9 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler, normalize
 from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
 
-DATA_DIR = Path(r"C:\Users\2006s\Documents\Codex\2026-09-11\create-an-image-of\outputs\illumination-classifier\data")
-COMP_DIR = Path(r"C:\Users\2006s\Documents\Codex\2026-09-11\create-an-image-of\outputs\illumination-classifier\comp_output")
+PROJECT_DIR = Path(__file__).resolve().parent
+DATA_DIR = PROJECT_DIR / "data"
+COMP_DIR = PROJECT_DIR / "comp_output"
 
 # 1. Load Features and labels
 train_hand_v1 = np.nan_to_num(np.load(COMP_DIR / "train_features.npz")['X'], nan=0.0, posinf=1e5, neginf=-1e5)

@@ -44,8 +44,12 @@ def seed_everything(seed=SEED):
 
 seed_everything()
 
-DATA_DIR = Path(r"C:\Users\2006s\Documents\Codex\2026-09-11\create-an-image-of\outputs\illumination-classifier\data")
-COMP_DIR = Path(r"C:\Users\2006s\Documents\Codex\2026-09-11\create-an-image-of\outputs\illumination-classifier\comp_output")
+PROJECT_DIR = Path(__file__).resolve().parent
+DATA_DIR = PROJECT_DIR / "data"
+COMP_DIR = PROJECT_DIR / "comp_output"
+SUBMISSIONS_DIR = PROJECT_DIR / "submissions"
+SUBMISSIONS_DIR.mkdir(parents=True, exist_ok=True)
+DESKTOP_DIR = Path.home() / "Desktop"
 
 print("=" * 70, flush=True)
 print("  GRANDMASTER v2: 10-FOLD BAGGED PIPELINE (NO PSEUDO-LABELING)", flush=True)
@@ -306,20 +310,21 @@ sub_df = pd.DataFrame({
     sample_sub.columns[1]: final_test_preds.tolist()
 })
 
-out_sub = Path(r"C:\Users\2006s\Documents\Codex\2026-09-11\create-an-image-of\outputs\illumination-classifier\submission.csv")
-desktop_sub = Path(r"C:\Users\2006s\Desktop\submission.csv")
+out_sub = PROJECT_DIR / "submission.csv"
+backup_sub = SUBMISSIONS_DIR / "submission_grandmaster_v2.csv"
 
 sub_df.to_csv(out_sub, index=False)
-sub_df.to_csv(desktop_sub, index=False)
-
-# Also save an un-overwritable backup of this exact submission
-backup_sub = Path(r"C:\Users\2006s\Desktop\submission_grandmaster_v2.csv")
 sub_df.to_csv(backup_sub, index=False)
+
+if DESKTOP_DIR.exists():
+    sub_df.to_csv(DESKTOP_DIR / "submission.csv", index=False)
+    sub_df.to_csv(DESKTOP_DIR / "submission_grandmaster_v2.csv", index=False)
 
 print(f"\n  Wrote 300 final predictions to:", flush=True)
 print(f"    {out_sub}", flush=True)
-print(f"    {desktop_sub}", flush=True)
 print(f"    {backup_sub}", flush=True)
+if DESKTOP_DIR.exists():
+    print(f"    {DESKTOP_DIR / 'submission.csv'}", flush=True)
 
 print(f"\n  Test Class Distribution:", flush=True)
 print(dict(pd.Series(final_test_preds).value_counts().sort_index()), flush=True)

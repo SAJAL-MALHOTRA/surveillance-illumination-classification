@@ -8,9 +8,8 @@ from scipy.optimize import minimize
 from sklearn.metrics import accuracy_score, confusion_matrix
 from sklearn.model_selection import StratifiedKFold
 from sklearn.linear_model import LogisticRegression
-from sklearn.preprocessing import StandardScaler, normalize
-
-COMP_DIR = r"C:\Users\2006s\Documents\Codex\2026-09-11\create-an-image-of\outputs\illumination-classifier\comp_output"
+from pathlib import Path
+COMP_DIR = str(Path(__file__).resolve().parent / "comp_output")
 
 train_hand = np.nan_to_num(np.load(f"{COMP_DIR}/train_features.npz")["X"])
 train_res = normalize(np.load(f"{COMP_DIR}/train_resnet18.npz")["feats"])

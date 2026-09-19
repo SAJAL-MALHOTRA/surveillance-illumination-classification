@@ -18,16 +18,21 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-DATA_DIR = Path(r"C:\Users\2006s\Documents\Codex\2026-09-11\create-an-image-of\outputs\illumination-classifier\data")
-PROJECT_DIR = Path(r"C:\Users\2006s\Documents\Codex\2026-09-11\create-an-image-of\outputs\illumination-classifier")
-DESKTOP_DIR = Path(r"C:\Users\2006s\Desktop")
+PROJECT_DIR = Path(__file__).resolve().parent
+DATA_DIR = PROJECT_DIR / "data"
+SUBMISSIONS_DIR = PROJECT_DIR / "submissions"
+SUBMISSIONS_DIR.mkdir(parents=True, exist_ok=True)
+DESKTOP_DIR = Path.home() / "Desktop"
 
 sample_sub = pd.read_csv(DATA_DIR / "sample_submission.csv")
-v6_file = DESKTOP_DIR / "submission_breakthrough_v6.csv"
+v6_file = SUBMISSIONS_DIR / "submission_breakthrough_v6.csv"
+if not v6_file.exists() and (DESKTOP_DIR / "submission_breakthrough_v6.csv").exists():
+    v6_file = DESKTOP_DIR / "submission_breakthrough_v6.csv"
 
-assert v6_file.exists(), "submission_breakthrough_v6.csv not found!"
+assert v6_file.exists(), f"Baseline v6 submission not found in {SUBMISSIONS_DIR} or {DESKTOP_DIR}!"
 v6_df = pd.read_csv(v6_file)
 assert len(v6_df) == 300, f"Expected 300 rows, got {len(v6_df)}"
+assert v6_df.iloc[:, 0].tolist() == sample_sub.iloc[:, 0].tolist(), "UUID alignment mismatch in v6 baseline!"
 
 preds = v6_df.iloc[:, 1].values.copy()
 print("v6 (0.200 Score) Class Distribution:")
@@ -69,15 +74,18 @@ print(f"\nTotal modifications from v6: {diff_count} (exactly 5 flips from Normal
 
 # Target output paths
 out_project = PROJECT_DIR / "submission.csv"
-out_desktop_main = DESKTOP_DIR / "submission.csv"
-out_desktop_backup = DESKTOP_DIR / "submission_breakthrough_v7.csv"
+out_named = SUBMISSIONS_DIR / "submission_breakthrough_v7.csv"
 
 new_sub.to_csv(out_project, index=False)
-new_sub.to_csv(out_desktop_main, index=False)
-new_sub.to_csv(out_desktop_backup, index=False)
+new_sub.to_csv(out_named, index=False)
+
+if DESKTOP_DIR.exists():
+    new_sub.to_csv(DESKTOP_DIR / "submission.csv", index=False)
+    new_sub.to_csv(DESKTOP_DIR / "submission_breakthrough_v7.csv", index=False)
 
 print(f"\nSuccessfully generated submission files:")
-print(f"  [1] {out_desktop_main} (Ready for upload)")
-print(f"  [2] {out_desktop_backup} (Permanent named backup)")
-print(f"  [3] {out_project}")
+print(f"  [1] {out_project}")
+print(f"  [2] {out_named} (Permanent named backup)")
+if DESKTOP_DIR.exists():
+    print(f"  [3] {DESKTOP_DIR / 'submission.csv'} (Desktop copy ready for upload)")
 print("\n>> VERIFICATION COMPLETE - ZERO PERMUTATION RISK <<")

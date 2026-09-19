@@ -23,8 +23,9 @@ import torch
 import torch.nn as nn
 from torchvision import models, transforms
 
-DATA_DIR = Path(r"C:\Users\2006s\Documents\Codex\2026-09-11\create-an-image-of\outputs\illumination-classifier\data")
-COMP_DIR = Path(r"C:\Users\2006s\Documents\Codex\2026-09-11\create-an-image-of\outputs\illumination-classifier\comp_output")
+PROJECT_DIR = Path(__file__).resolve().parent
+DATA_DIR = PROJECT_DIR / "data"
+COMP_DIR = PROJECT_DIR / "comp_output"
 
 train_cache = COMP_DIR / "train_swin_t.npz"
 test_cache = COMP_DIR / "test_swin_t.npz"
